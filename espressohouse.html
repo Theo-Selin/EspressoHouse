@@ -13,6 +13,8 @@
             <option value="30">Cappucino 30 kr</option>
             <option value="40">Latte 40 Kr</option>
         </select>
+        <label for="numberOfCoffees"></label>
+        <input id="numberOfCoffees"/>
         <button onclick="onClick()">Buy</button>
         <div>
             Totalspent: <p id="totalSpent"></p>
@@ -46,7 +48,8 @@
         const costumer = new Costumer()
         function onClick(){
             const input = document.getElementById("coffeeSorts")
-            costumer.addTransaction(input.value)
+            const numberOfCoffees = document.getElementById("numberOfCoffees")
+            costumer.addTransaction(input.value * numberOfCoffees.value)
             const totalSpent = document.getElementById("totalSpent")
             totalSpent.innerHTML = costumer.getTotalSpent()
            
