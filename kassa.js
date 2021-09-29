@@ -3,7 +3,7 @@
                 {name: 'Brygg Kaffe', price: 20},
                 {name: 'Cappucino', price: 30},
                 {name: 'Latte', price: 40}
-                ]
+            ]
     
                 // appends coffee options depending on objects in "coffees" array
                 coffees.forEach(coffeeSort => {
@@ -18,7 +18,6 @@
                 class Customer {
                 constructor() {
                     this.transactions = []
-                    this.history = [""]
                 }
                 // adds selected amount of objects in customer's own array
                 addTransaction(amount) {
