@@ -8,8 +8,8 @@
                 // appends coffee options depending on objects in "coffees" array
                 coffees.forEach(coffeeSort => {
                     const option = document.createElement("option")
-                    option.value = coffeeSort.price
                     option.name = coffeeSort.name
+                    option.value = coffeeSort.price
                     option.innerHTML = `${coffeeSort.name} - ${coffeeSort.price} kr`
                     coffeeSorts.appendChild(option)
                 })
@@ -62,6 +62,9 @@
                 // text for each child to print (kind of long)
                 historyLog.innerHTML = `Du köpte ${optionAmount}st ${coffees[optionIndex].name} 
                 för ${coffees[optionIndex].price} kr styck. Summa: ${coffees[optionIndex].price*optionAmount}`
+
+                // Prints history logs per click
+                history.appendChild(historyLog)
     
                 // Prints total amount spent
                 document.getElementById("purchase").innerHTML = `Du har handlat för: ${customer.getTotalSpent()} kr`
@@ -69,7 +72,4 @@
                 // Prints customer's membership status
                 customer.setDiscountStatus(customer.transactions)
                 document.getElementById("status").innerHTML = `Medlemsstatus: ${customer.setDiscountStatus()}`
-    
-                // Prints history logs per click
-                history.appendChild(historyLog)
             }
