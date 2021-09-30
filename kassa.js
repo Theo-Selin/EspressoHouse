@@ -4,7 +4,6 @@
                 {name: 'Cappucino', price: 30},
                 {name: 'Latte', price: 40}
             ]
-    
                 // appends coffee options depending on objects in "coffees" array
                 coffees.forEach(coffeeSort => {
                     const option = document.createElement("option")
@@ -12,8 +11,7 @@
                     option.value = coffeeSort.price
                     option.innerHTML = `${coffeeSort.name} - ${coffeeSort.price} kr`
                     coffeeSorts.appendChild(option)
-                })
-    
+                })  
                 // creates a class for different customers
                 class Customer {
                 constructor() {
@@ -23,7 +21,6 @@
                         price: coffees.price,
                         amount: this.amount
                     }
-
                 }
                 // adds selected amount of objects in customer's own array
                 addTransaction(product, amount) {
@@ -42,6 +39,7 @@
                     })
                     return sum
                 }
+                // stores amount of cups purchased
                 getTotalCups() {
                     let cups = 0
                     this.transactions.forEach(purchase => {
@@ -75,6 +73,7 @@
                 const history = document.getElementById("history")
                 const historyLog = document.createElement("p")
 
+                // changes transaction header after first purchase
                 document.getElementById("transactionHeader").innerHTML = `Dina transaktioner`
     
                 // text for each child to print (kind of long)
