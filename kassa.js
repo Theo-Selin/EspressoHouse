@@ -18,26 +18,42 @@
                 class Customer {
                 constructor() {
                     this.transactions = []
+                    this.transaction = {
+                        name: coffees.name,
+                        price: coffees.price,
+                        amount: this.amount
+                    }
+
                 }
                 // adds selected amount of objects in customer's own array
-                addTransaction(amount) {
-                    for (let index = 0; index < amount; index++) {
-                        this.transactions.push(coffees[optionIndex])
+                addTransaction(product, amount) {
+                    this.transaction = {
+                        name: product.name,
+                        price: product.price,
+                        amount: amount
                     }
+                    this.transactions.push(this.transaction)
                 }
                 // stores coffee object's price in sum
                 getTotalSpent() {
                     let sum = 0
                     this.transactions.forEach(purchase => {
-                        sum += purchase.price
+                        sum += purchase.price * purchase.amount
                     })
                     return sum
                 }
+                getTotalCups() {
+                    let cups = 0
+                    this.transactions.forEach(purchase => {
+                        cups += parseInt(purchase.amount)
+                    })
+                    return cups
+                }
                 // sets status according to amount of cups
                 setDiscountStatus() {
-                    if(this.transactions.length < 10) {
+                    if(this.getTotalCups() < 10) {
                         return "Brons"
-                    } else if(this.transactions.length >=10 && this.transactions.length < 30) {
+                    } else if(this.getTotalCups() >=10 && this.getTotalCups() < 30) {
                         return "Silver"
                     } else {
                         return "Guld"
@@ -47,17 +63,19 @@
             // creates a new customer
             const customer = new Customer()
     
-            const click = onClick = () => {
+            onClick = () => {
                 
                 // creates dynamic variables depending on chosen coffee
                 optionIndex = document.getElementById("coffeeSorts").selectedIndex
                 optionAmount = document.getElementById("amountOfCups").value
     
-                customer.addTransaction(optionAmount)
+                customer.addTransaction(coffees[optionIndex], optionAmount)
     
                 // creates a parent for history logs
                 const history = document.getElementById("history")
                 const historyLog = document.createElement("p")
+
+                document.getElementById("transactionHeader").innerHTML = `Dina transaktioner`
     
                 // text for each child to print (kind of long)
                 historyLog.innerHTML = `Du köpte ${optionAmount}st ${coffees[optionIndex].name} 
@@ -70,6 +88,5 @@
                 document.getElementById("purchase").innerHTML = `Du har handlat för: ${customer.getTotalSpent()} kr`
     
                 // Prints customer's membership status
-                customer.setDiscountStatus(customer.transactions)
                 document.getElementById("status").innerHTML = `Medlemsstatus: ${customer.setDiscountStatus()}`
             }
