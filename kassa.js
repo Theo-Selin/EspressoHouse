@@ -75,7 +75,7 @@ const printTransactions = () => {
     history.appendChild(historyLog)
 }
 
-// finalizing purchase and prints 
+// adds transaction according to chosen coffee and prints information
 const finalizingPurchase = () => {
 
     // creates dynamic variables depending on chosen coffee
