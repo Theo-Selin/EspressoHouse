@@ -43,7 +43,7 @@ class Customer {
         return cups
     }
     // sets status according to amount of cups
-    setMembershipStatus() {
+    getMembershipStatus() {
         if (this.getTotalCups() < 10) {
             return "Brons"
         } else if (this.getTotalCups() >= 10 && this.getTotalCups() < 30) {
@@ -62,7 +62,7 @@ const printTotalSpent = () => {
 }
 // prints membership status
 const printMembershipStatus = () => {
-    document.getElementById("status").innerHTML = `Medlemsstatus: ${customer.setMembershipStatus()}`
+    document.getElementById("status").innerHTML = `Medlemsstatus: ${customer.getMembershipStatus()}`
 }
 // prints transaction history
 const printTransactions = () => {
