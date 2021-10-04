@@ -75,12 +75,15 @@ const printTransactions = () => {
     history.appendChild(historyLog)
 }
 
-// adds transaction according to chosen coffee and prints information
+// adds transaction according to chosen coffee and prints information when purchase button is pressed
 const finalizingPurchase = () => {
 
     // creates dynamic variables depending on chosen coffee
     optionIndex = document.getElementById("coffeeSorts").selectedIndex
     optionAmount = document.getElementById("amountOfCups").value
+
+    //changes transaction title after first purchase
+    document.getElementById("transactionHeader").innerHTML = "Dina transaktioner"
 
     customer.addTransaction(coffees[optionIndex], optionAmount)
 
@@ -89,4 +92,6 @@ const finalizingPurchase = () => {
     printMembershipStatus()
 
     printTransactions()
+
+    console.log(customer.transactions)
 }
